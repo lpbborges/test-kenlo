@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import { ZodError, type ZodIssue } from 'zod'
 
 import { BaseError } from '@/errors'
@@ -25,8 +25,6 @@ export function errorHandlerMiddleware(
             },
         })
     }
-
-    console.log("err", err)
 
     return res.status(500).send({
         error: { message: 'Internal server error.' },

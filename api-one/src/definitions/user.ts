@@ -35,4 +35,3 @@ export const UpdateUserSchema = CreateUserSchema.partial({
 })
 
 export type UpdateUser = z.infer<typeof UpdateUserSchema>
-

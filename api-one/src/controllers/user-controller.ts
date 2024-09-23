@@ -63,7 +63,6 @@ export class UserController {
 
     async newChat(req: Request, res: Response, next: NextFunction) {
         try {
-
             const { id } = FindByIdParamsSchema.parse(req.params)
             const chat = await this.userService.newChat(id, req.body)
 
