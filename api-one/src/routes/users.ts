@@ -1,8 +1,16 @@
 import { Router } from 'express'
 
 import { CreateUserSchema, UpdateUserSchema } from '@/definitions'
-import { validateAndParseInput } from '@/middlewares'
+import { env } from '@/env'
 import { makeUserController } from '@/factories/make-user-controller'
+import { validateAndParseInput } from '@/middlewares'
+import rateLimit from 'express-rate-limit'
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: env.NODE_ENV === 'production' ? 10 : 100,
+    message: 'Too many requests, please try again later.',
+})
 
 const userRoutes = Router()
 const userController = makeUserController()
@@ -29,7 +37,7 @@ userRoutes.delete('/:id', (req, res, next) =>
     userController.delete(req, res, next)
 )
 
-userRoutes.post('/:id/chat', (req, res, next) =>
+userRoutes.post('/:id/chat', limiter, (req, res, next) =>
     userController.newChat(req, res, next)
 )
 
