@@ -1,6 +1,7 @@
 # TEST KENLO
 
 ## Prerequisites
+
 Before you begin, ensure you have the following installed on your system:
 
 - Docker
@@ -28,7 +29,7 @@ docker-compose up --build
 ```
 
 4. Access your application:
-Once the containers are up and running, you should be able to access your Node.js application. The exact URL will depend on how you've configured your compose.yml file, but it's typically http://localhost:3000.
+Once the containers are up and running, you should be able to access your Node.js application. The exact URL will depend on how you've configured your compose.yml file, by default is <http://localhost:3000>.
 
 5. Stop the containers:
 To stop the running containers, use:
@@ -36,3 +37,5 @@ To stop the running containers, use:
 ```bash
 docker-compose down
 ```
+
+#### [Swagger API Documentation](https://test-kenlo.onrender.com/docs)
