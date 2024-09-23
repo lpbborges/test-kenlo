@@ -6,6 +6,11 @@ on:
     paths:
       - "api-one/**"
 
+  pull_request:
+    branches: [main]
+    paths:
+      - "api-one/**"
+
 jobs:
   test:
     runs-on: ubuntu-latest
